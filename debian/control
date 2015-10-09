@@ -1,0 +1,34 @@
+Source: efivar
+Priority: optional
+Maintainer: Daniel Jared Dominguez <Jared_Dominguez@Dell.com>
+Uploaders: Steve McIntyre <93sam@debian.org>
+Build-Depends: debhelper (>= 9.0.0), libpopt-dev
+Standards-Version: 3.9.6
+Section: libs
+Homepage: https://github.com/vathpela/efivar
+Vcs-Git: git://anonscm.debian.org/collab-maint/efivar.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/efivar.git
+
+Package: libefivar-dev
+Section: libdevel
+Architecture: amd64 i386 ia64 armhf arm64 armel
+Multi-Arch: same
+Depends: libefivar0 (= ${binary:Version}), ${misc:Depends}
+Description: Development headers for libefivar
+ development headers required to use libefivar
+
+Package: efivar
+Section: admin
+Architecture: amd64 i386 ia64 armhf arm64 armel
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, libefivar0 (= ${binary:Version})
+Description: Tools to manage UEFI variables
+ efivar provides a simple command line interface to the UEFI variable facility.
+
+Package: libefivar0
+Architecture: amd64 i386 ia64 armhf arm64 armel
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Library to manage UEFI variables
+ Library to allow for the simple manipulation of UEFI variables.

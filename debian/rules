@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+export DH_VERBOSE=1
+export DH_OPTIONS=-V
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@ 
+
+override_dh_auto_build:
+	dh_auto_build -- libdir=\$${prefix}/usr/lib/$(DEB_HOST_MULTIARCH)
+
+override_dh_auto_install:
+	dh_auto_install -- libdir=\$${prefix}/usr/lib/$(DEB_HOST_MULTIARCH)

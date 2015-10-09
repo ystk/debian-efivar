@@ -1,0 +1,76 @@
+efivar (0.15-3) unstable; urgency=medium
+
+  * Partially fix #773007 by defining DataSize based on whether our kernel is
+    32/64-bit.
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Wed, 17 Dec 2014 22:26:58 -0600
+
+efivar (0.15-2) unstable; urgency=medium
+
+  * Apply upstream patches (Closes: #764386)
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Mon, 03 Nov 2014 10:07:39 -0600
+
+efivar (0.15-1) unstable; urgency=medium
+
+  * New upstream release
+  * Clear out the quilt patch series 
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Tue, 28 Oct 2014 21:26:08 -0500
+
+efivar (0.14-1) unstable; urgency=medium
+
+  * New upstream release
+  * Declare efivar binary package Multi-Arch: foreign
+  * libefivar-dev should be Multi-Arch: same
+  * Upstream patch a01d1062 to fix 32-bit x86
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Sat, 11 Oct 2014 11:43:56 -0500
+
+efivar (0.12-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Mon, 29 Sep 2014 15:45:20 -0500
+
+efivar (0.11-1) unstable; urgency=medium
+
+  * New upstream release
+  * Remove all current quilt patches since they're all upstream 
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Thu, 28 Aug 2014 19:18:06 -0500
+
+efivar (0.10-5) unstable; urgency=medium
+
+  * Better debian/watch file
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Mon, 07 Jul 2014 15:26:10 -0500
+
+efivar (0.10-4) unstable; urgency=medium
+
+  * Add 07-assembly-comment.patch to fix armhf builds (Closes: #752273)
+  * Rename man page patch to match Ubuntu.
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Tue, 24 Jun 2014 12:27:22 -0500
+
+efivar (0.10-3) unstable; urgency=medium
+
+  * Use .balign instead of .align in assembly files to fix building issue on
+    armhf
+  * Add real efivar(1) man page
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Tue, 17 Jun 2014 11:25:52 -0500
+
+efivar (0.10-2) unstable; urgency=medium
+
+  * Fix shlib-with-executable-stack lintian warning in libefivar0 
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Tue, 10 Jun 2014 14:58:19 -0500
+
+efivar (0.10-1) unstable; urgency=low
+
+  * Initial release (Closes: #750780)
+  * Multiarch support
+  * Add README.Debian for description on building source package
+
+ -- Daniel Jared Dominguez <Jared_Dominguez@Dell.com>  Fri, 06 Jun 2014 15:40:53 -0500

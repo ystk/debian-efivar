@@ -1,0 +1,7 @@
+01-efi_guid_t.patch
+02-read_file.patch
+03-errno.patch
+04-enomem.patch
+05-8k_vars.patch
+06-efi_variable_t.patch
+07-num_bits.patch
