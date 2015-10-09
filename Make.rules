@@ -1,0 +1,28 @@
+%.a :
+	$(AR) -cvqs $@ $^
+
+% : %.o
+	$(CCLD) $(ccldflags) -o $@ $^ $(foreach lib,$(LIBS),-l$(lib))
+
+%.so.$(SONAME_VERSION) : 
+	$(CCLD) $(cflags) -Wl,-soname,$(SONAME) $(ccldflags) $(LIBFLAGS) $^ -o $@ $(foreach lib,$(LIBS),-l$(lib))
+
+%.so : %.so.$(SONAME_VERSION)
+	ln -sf $^ $@
+
+%.o: %.c
+	$(CC) $(cflags) $(CPPFLAGS) -c -o $@ $<
+
+.%.c.P : %.c
+	$(CC) $(cflags) $(CPPFLAGS) -DEFIVAR_BUILD_ENVIRONMENT -M -MM -MF $@ $^
+
+.%.h.P : %.h
+	$(CC) $(cflags) $(CPPFLAGS) -DEFIVAR_BUILD_ENVIRONMENT -M -MM -MF $@ $^
+
+%.S: %.c
+	$(CC) $(cflags) $(CPPFLAGS) -S $< -o $@
+
+%.E: %.c
+	$(CC) $(cflags) $(CPPFLAGS) -E $< -o $@
+
+%.c : %.h

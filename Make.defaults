@@ -1,0 +1,26 @@
+INSTALL ?= install
+libdir	?= /usr/lib64/
+mandir	?= /usr/share/man/
+includedir	?= /usr/include/
+bindir	?= /usr/bin/
+PCDIR	?= $(libdir)/pkgconfig/
+CC	:= $(if $(filter default,$(origin CC)),gcc,$(CC))
+CCLD	:= $(if $(filter undefined,$(origin CCLD)),$(CC),$(CCLD))
+CFLAGS	?= -O0 -g
+
+ARCH = $(shell uname -m)
+clang_cflags =
+gcc_cflags = -Wmaybe-uninitialized
+cflags	:= $(CFLAGS) \
+	-Wall -Wsign-compare -std=gnu11 -fshort-wchar -fPIC \
+	-D_GNU_SOURCE -I${TOPDIR}/src/ \
+	$(if $(filter $(CC),clang),$(clang_cflags),) \
+	$(if $(filter $(CC),gcc),$(gcc_cflags),)
+clang_ccldflags =
+gcc_ccldflags = -fno-merge-constants
+ccldflags := $(cflags) $(CCLDFLAGS) $(LDFLAGS) \
+	$(if $(filter $(CCLD),clang),$(clang_ccldflags),) \
+	$(if $(filter $(CCLD),gcc),$(gcc_ccldflags),)
+LIBFLAGS += -shared
+
+SONAME_VERSION := 0
